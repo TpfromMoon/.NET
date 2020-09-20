@@ -1,6 +1,0 @@
-c:\users\白燚\documents\visual studio 2015\Projects\homework1\AiShiShaiFa\bin\Debug\AiShiShaiFa.exe.config
-c:\users\白燚\documents\visual studio 2015\Projects\homework1\AiShiShaiFa\bin\Debug\AiShiShaiFa.exe
-c:\users\白燚\documents\visual studio 2015\Projects\homework1\AiShiShaiFa\bin\Debug\AiShiShaiFa.pdb
-c:\users\白燚\documents\visual studio 2015\Projects\homework1\AiShiShaiFa\obj\Debug\AiShiShaiFa.exe
-c:\users\白燚\documents\visual studio 2015\Projects\homework1\AiShiShaiFa\obj\Debug\AiShiShaiFa.pdb
-C:\Users\白燚\Documents\Visual Studio 2015\Projects\homework1\AiShiShaiFa\obj\Debug\AiShiShaiFa.csprojResolveAssemblyReference.cache
