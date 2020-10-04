@@ -1,4 +1,4 @@
-﻿namespace homework4
+﻿namespace ordermanagewinform
 {
     partial class Form1
     {
@@ -28,185 +28,287 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.button1 = new System.Windows.Forms.Button();
-            this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
-            this.label6 = new System.Windows.Forms.Label();
-            this.label7 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.textBox3 = new System.Windows.Forms.TextBox();
-            this.textBox4 = new System.Windows.Forms.TextBox();
-            this.textBox5 = new System.Windows.Forms.TextBox();
-            this.textBox6 = new System.Windows.Forms.TextBox();
+            this.components = new System.ComponentModel.Container();
+            this.btAdd = new System.Windows.Forms.Button();
+            this.btDel = new System.Windows.Forms.Button();
+            this.btChange = new System.Windows.Forms.Button();
+            this.btImport = new System.Windows.Forms.Button();
+            this.btExport = new System.Windows.Forms.Button();
             this.comboBox1 = new System.Windows.Forms.ComboBox();
-            this.panel1 = new System.Windows.Forms.Panel();
+            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.btQuery = new System.Windows.Forms.Button();
+            this.itembindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.itemsBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.dataGridView2 = new System.Windows.Forms.DataGridView();
+            this.indexDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.goodsNameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.quantityDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.priceDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.totalPriceDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.orderbindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.orderIdDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.customerDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.createTimeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.totalPriceDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.orderItemBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.orderServiceBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.orderBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
+            this.orderItemBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
+            ((System.ComponentModel.ISupportInitialize)(this.itembindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.itemsBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.orderbindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.orderItemBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.orderServiceBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.orderBindingSource1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.orderItemBindingSource1)).BeginInit();
             this.SuspendLayout();
             // 
-            // button1
+            // btAdd
             // 
-            this.button1.Font = new System.Drawing.Font("宋体", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.button1.Location = new System.Drawing.Point(770, 463);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(101, 44);
-            this.button1.TabIndex = 0;
-            this.button1.Text = "draw";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.btAdd.Location = new System.Drawing.Point(12, 26);
+            this.btAdd.Name = "btAdd";
+            this.btAdd.Size = new System.Drawing.Size(81, 42);
+            this.btAdd.TabIndex = 0;
+            this.btAdd.Text = "新建订单";
+            this.btAdd.UseVisualStyleBackColor = true;
+            this.btAdd.Click += new System.EventHandler(this.btAdd_Click);
             // 
-            // label1
+            // btDel
             // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
-            this.label1.Location = new System.Drawing.Point(677, 100);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(82, 17);
-            this.label1.TabIndex = 1;
-            this.label1.Text = "递归深度(n)";
+            this.btDel.Location = new System.Drawing.Point(99, 26);
+            this.btDel.Name = "btDel";
+            this.btDel.Size = new System.Drawing.Size(84, 42);
+            this.btDel.TabIndex = 1;
+            this.btDel.Text = "删除订单";
+            this.btDel.UseVisualStyleBackColor = true;
+            this.btDel.Click += new System.EventHandler(this.btDel_Click);
             // 
-            // label2
+            // btChange
             // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(677, 147);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(115, 15);
-            this.label2.TabIndex = 2;
-            this.label2.Text = "主干长度(leng)";
+            this.btChange.Location = new System.Drawing.Point(189, 26);
+            this.btChange.Name = "btChange";
+            this.btChange.Size = new System.Drawing.Size(80, 42);
+            this.btChange.TabIndex = 2;
+            this.btChange.Text = "修改订单";
+            this.btChange.UseVisualStyleBackColor = true;
+            this.btChange.Click += new System.EventHandler(this.btChange_Click);
             // 
-            // label3
+            // btImport
             // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(677, 196);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(145, 15);
-            this.label3.TabIndex = 3;
-            this.label3.Text = "右分支长度比(per1)";
+            this.btImport.Location = new System.Drawing.Point(275, 26);
+            this.btImport.Name = "btImport";
+            this.btImport.Size = new System.Drawing.Size(80, 42);
+            this.btImport.TabIndex = 3;
+            this.btImport.Text = "导入订单";
+            this.btImport.UseVisualStyleBackColor = true;
+            this.btImport.Click += new System.EventHandler(this.btImport_Click);
             // 
-            // label4
+            // btExport
             // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(677, 244);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(145, 15);
-            this.label4.TabIndex = 4;
-            this.label4.Text = "左分支长度比(per2)";
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(677, 290);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(122, 15);
-            this.label5.TabIndex = 5;
-            this.label5.Text = "右分支角度(th1)";
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(677, 336);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(122, 15);
-            this.label6.TabIndex = 6;
-            this.label6.Text = "左分支角度(th2)";
-            // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(677, 382);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(107, 15);
-            this.label7.TabIndex = 7;
-            this.label7.Text = "画笔颜色(pen)";
-            // 
-            // textBox1
-            // 
-            this.textBox1.Location = new System.Drawing.Point(841, 98);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(100, 25);
-            this.textBox1.TabIndex = 8;
-            this.textBox1.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
-            // 
-            // textBox2
-            // 
-            this.textBox2.Location = new System.Drawing.Point(841, 144);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(100, 25);
-            this.textBox2.TabIndex = 9;
-            this.textBox2.TextChanged += new System.EventHandler(this.textBox2_TextChanged);
-            // 
-            // textBox3
-            // 
-            this.textBox3.Location = new System.Drawing.Point(841, 193);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(100, 25);
-            this.textBox3.TabIndex = 10;
-            this.textBox3.TextChanged += new System.EventHandler(this.textBox3_TextChanged);
-            // 
-            // textBox4
-            // 
-            this.textBox4.Location = new System.Drawing.Point(841, 241);
-            this.textBox4.Name = "textBox4";
-            this.textBox4.Size = new System.Drawing.Size(100, 25);
-            this.textBox4.TabIndex = 11;
-            this.textBox4.TextChanged += new System.EventHandler(this.textBox4_TextChanged);
-            // 
-            // textBox5
-            // 
-            this.textBox5.Location = new System.Drawing.Point(841, 287);
-            this.textBox5.Name = "textBox5";
-            this.textBox5.Size = new System.Drawing.Size(100, 25);
-            this.textBox5.TabIndex = 12;
-            this.textBox5.TextChanged += new System.EventHandler(this.textBox5_TextChanged);
-            // 
-            // textBox6
-            // 
-            this.textBox6.Location = new System.Drawing.Point(841, 333);
-            this.textBox6.Name = "textBox6";
-            this.textBox6.Size = new System.Drawing.Size(100, 25);
-            this.textBox6.TabIndex = 13;
-            this.textBox6.TextChanged += new System.EventHandler(this.textBox6_TextChanged);
+            this.btExport.Location = new System.Drawing.Point(361, 26);
+            this.btExport.Name = "btExport";
+            this.btExport.Size = new System.Drawing.Size(83, 42);
+            this.btExport.TabIndex = 4;
+            this.btExport.Text = "输出订单";
+            this.btExport.UseVisualStyleBackColor = true;
+            this.btExport.Click += new System.EventHandler(this.btExport_Click);
             // 
             // comboBox1
             // 
             this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(841, 379);
+            this.comboBox1.Items.AddRange(new object[] {
+            "按客户名查询",
+            "按商品名查询"});
+            this.comboBox1.Location = new System.Drawing.Point(461, 39);
             this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(100, 23);
-            this.comboBox1.TabIndex = 14;
+            this.comboBox1.Size = new System.Drawing.Size(121, 23);
+            this.comboBox1.TabIndex = 5;
             // 
-            // panel1
+            // textBox1
             // 
-            this.panel1.Location = new System.Drawing.Point(0, 0);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(654, 566);
-            this.panel1.TabIndex = 15;
+            this.textBox1.Location = new System.Drawing.Point(588, 37);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(100, 25);
+            this.textBox1.TabIndex = 6;
+            // 
+            // btQuery
+            // 
+            this.btQuery.Location = new System.Drawing.Point(702, 26);
+            this.btQuery.Name = "btQuery";
+            this.btQuery.Size = new System.Drawing.Size(75, 36);
+            this.btQuery.TabIndex = 9;
+            this.btQuery.Text = "查询";
+            this.btQuery.UseVisualStyleBackColor = true;
+            this.btQuery.Click += new System.EventHandler(this.btQuery_Click);
+            // 
+            // itembindingSource
+            // 
+            this.itembindingSource.DataMember = "Items";
+            this.itembindingSource.DataSource = this.orderbindingSource;
+            // 
+            // itemsBindingSource
+            // 
+            this.itemsBindingSource.DataMember = "Items";
+            this.itemsBindingSource.DataSource = this.orderbindingSource;
+            // 
+            // dataGridView1
+            // 
+            this.dataGridView1.AutoGenerateColumns = false;
+            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.orderIdDataGridViewTextBoxColumn,
+            this.customerDataGridViewTextBoxColumn,
+            this.createTimeDataGridViewTextBoxColumn,
+            this.totalPriceDataGridViewTextBoxColumn});
+            this.dataGridView1.DataSource = this.orderbindingSource;
+            this.dataGridView1.Location = new System.Drawing.Point(12, 100);
+            this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.RowHeadersWidth = 51;
+            this.dataGridView1.RowTemplate.Height = 27;
+            this.dataGridView1.Size = new System.Drawing.Size(391, 344);
+            this.dataGridView1.TabIndex = 10;
+            // 
+            // dataGridView2
+            // 
+            this.dataGridView2.AutoGenerateColumns = false;
+            this.dataGridView2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView2.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.indexDataGridViewTextBoxColumn,
+            this.goodsNameDataGridViewTextBoxColumn,
+            this.quantityDataGridViewTextBoxColumn,
+            this.priceDataGridViewTextBoxColumn,
+            this.totalPriceDataGridViewTextBoxColumn1});
+            this.dataGridView2.DataSource = this.itembindingSource;
+            this.dataGridView2.Location = new System.Drawing.Point(409, 100);
+            this.dataGridView2.Name = "dataGridView2";
+            this.dataGridView2.RowHeadersWidth = 51;
+            this.dataGridView2.RowTemplate.Height = 27;
+            this.dataGridView2.Size = new System.Drawing.Size(368, 344);
+            this.dataGridView2.TabIndex = 11;
+            // 
+            // indexDataGridViewTextBoxColumn
+            // 
+            this.indexDataGridViewTextBoxColumn.DataPropertyName = "Index";
+            this.indexDataGridViewTextBoxColumn.HeaderText = "Index";
+            this.indexDataGridViewTextBoxColumn.MinimumWidth = 6;
+            this.indexDataGridViewTextBoxColumn.Name = "indexDataGridViewTextBoxColumn";
+            this.indexDataGridViewTextBoxColumn.Width = 125;
+            // 
+            // goodsNameDataGridViewTextBoxColumn
+            // 
+            this.goodsNameDataGridViewTextBoxColumn.DataPropertyName = "GoodsName";
+            this.goodsNameDataGridViewTextBoxColumn.HeaderText = "GoodsName";
+            this.goodsNameDataGridViewTextBoxColumn.MinimumWidth = 6;
+            this.goodsNameDataGridViewTextBoxColumn.Name = "goodsNameDataGridViewTextBoxColumn";
+            this.goodsNameDataGridViewTextBoxColumn.Width = 125;
+            // 
+            // quantityDataGridViewTextBoxColumn
+            // 
+            this.quantityDataGridViewTextBoxColumn.DataPropertyName = "Quantity";
+            this.quantityDataGridViewTextBoxColumn.HeaderText = "Quantity";
+            this.quantityDataGridViewTextBoxColumn.MinimumWidth = 6;
+            this.quantityDataGridViewTextBoxColumn.Name = "quantityDataGridViewTextBoxColumn";
+            this.quantityDataGridViewTextBoxColumn.Width = 125;
+            // 
+            // priceDataGridViewTextBoxColumn
+            // 
+            this.priceDataGridViewTextBoxColumn.DataPropertyName = "Price";
+            this.priceDataGridViewTextBoxColumn.HeaderText = "Price";
+            this.priceDataGridViewTextBoxColumn.MinimumWidth = 6;
+            this.priceDataGridViewTextBoxColumn.Name = "priceDataGridViewTextBoxColumn";
+            this.priceDataGridViewTextBoxColumn.Width = 125;
+            // 
+            // totalPriceDataGridViewTextBoxColumn1
+            // 
+            this.totalPriceDataGridViewTextBoxColumn1.DataPropertyName = "TotalPrice";
+            this.totalPriceDataGridViewTextBoxColumn1.HeaderText = "TotalPrice";
+            this.totalPriceDataGridViewTextBoxColumn1.MinimumWidth = 6;
+            this.totalPriceDataGridViewTextBoxColumn1.Name = "totalPriceDataGridViewTextBoxColumn1";
+            this.totalPriceDataGridViewTextBoxColumn1.ReadOnly = true;
+            this.totalPriceDataGridViewTextBoxColumn1.Width = 125;
+            // 
+            // orderbindingSource
+            // 
+            this.orderbindingSource.DataSource = typeof(ordermanagewinform.Order);
+            // 
+            // orderIdDataGridViewTextBoxColumn
+            // 
+            this.orderIdDataGridViewTextBoxColumn.DataPropertyName = "OrderId";
+            this.orderIdDataGridViewTextBoxColumn.HeaderText = "OrderId";
+            this.orderIdDataGridViewTextBoxColumn.MinimumWidth = 6;
+            this.orderIdDataGridViewTextBoxColumn.Name = "orderIdDataGridViewTextBoxColumn";
+            this.orderIdDataGridViewTextBoxColumn.Width = 125;
+            // 
+            // customerDataGridViewTextBoxColumn
+            // 
+            this.customerDataGridViewTextBoxColumn.DataPropertyName = "Customer";
+            this.customerDataGridViewTextBoxColumn.HeaderText = "Customer";
+            this.customerDataGridViewTextBoxColumn.MinimumWidth = 6;
+            this.customerDataGridViewTextBoxColumn.Name = "customerDataGridViewTextBoxColumn";
+            this.customerDataGridViewTextBoxColumn.Width = 125;
+            // 
+            // createTimeDataGridViewTextBoxColumn
+            // 
+            this.createTimeDataGridViewTextBoxColumn.DataPropertyName = "CreateTime";
+            this.createTimeDataGridViewTextBoxColumn.HeaderText = "CreateTime";
+            this.createTimeDataGridViewTextBoxColumn.MinimumWidth = 6;
+            this.createTimeDataGridViewTextBoxColumn.Name = "createTimeDataGridViewTextBoxColumn";
+            this.createTimeDataGridViewTextBoxColumn.Width = 125;
+            // 
+            // totalPriceDataGridViewTextBoxColumn
+            // 
+            this.totalPriceDataGridViewTextBoxColumn.DataPropertyName = "TotalPrice";
+            this.totalPriceDataGridViewTextBoxColumn.HeaderText = "TotalPrice";
+            this.totalPriceDataGridViewTextBoxColumn.MinimumWidth = 6;
+            this.totalPriceDataGridViewTextBoxColumn.Name = "totalPriceDataGridViewTextBoxColumn";
+            this.totalPriceDataGridViewTextBoxColumn.ReadOnly = true;
+            this.totalPriceDataGridViewTextBoxColumn.Width = 125;
+            // 
+            // orderItemBindingSource
+            // 
+            this.orderItemBindingSource.DataSource = typeof(ordermanagewinform.OrderDetails);
+            // 
+            // orderServiceBindingSource
+            // 
+            this.orderServiceBindingSource.DataSource = typeof(ordermanagewinform.OrderService);
+            // 
+            // orderBindingSource1
+            // 
+            this.orderBindingSource1.DataSource = typeof(ordermanagewinform.Order);
+            // 
+            // orderItemBindingSource1
+            // 
+            this.orderItemBindingSource1.DataSource = typeof(ordermanagewinform.OrderDetails);
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1004, 565);
-            this.Controls.Add(this.panel1);
-            this.Controls.Add(this.comboBox1);
-            this.Controls.Add(this.textBox6);
-            this.Controls.Add(this.textBox5);
-            this.Controls.Add(this.textBox4);
-            this.Controls.Add(this.textBox3);
-            this.Controls.Add(this.textBox2);
+            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.dataGridView2);
+            this.Controls.Add(this.dataGridView1);
+            this.Controls.Add(this.btQuery);
             this.Controls.Add(this.textBox1);
-            this.Controls.Add(this.label7);
-            this.Controls.Add(this.label6);
-            this.Controls.Add(this.label5);
-            this.Controls.Add(this.label4);
-            this.Controls.Add(this.label3);
-            this.Controls.Add(this.label2);
-            this.Controls.Add(this.label1);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.comboBox1);
+            this.Controls.Add(this.btExport);
+            this.Controls.Add(this.btImport);
+            this.Controls.Add(this.btChange);
+            this.Controls.Add(this.btDel);
+            this.Controls.Add(this.btAdd);
             this.Name = "Form1";
             this.Text = "Form1";
+            ((System.ComponentModel.ISupportInitialize)(this.itembindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.itemsBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.orderbindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.orderItemBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.orderServiceBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.orderBindingSource1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.orderItemBindingSource1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -214,22 +316,32 @@
 
         #endregion
 
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.TextBox textBox2;
-        private System.Windows.Forms.TextBox textBox3;
-        private System.Windows.Forms.TextBox textBox4;
-        private System.Windows.Forms.TextBox textBox5;
-        private System.Windows.Forms.TextBox textBox6;
+        private System.Windows.Forms.Button btAdd;
+        private System.Windows.Forms.Button btDel;
+        private System.Windows.Forms.Button btChange;
+        private System.Windows.Forms.Button btImport;
+        private System.Windows.Forms.Button btExport;
         private System.Windows.Forms.ComboBox comboBox1;
-        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.BindingSource itembindingSource;
+        private System.Windows.Forms.Button btQuery;
+        public System.Windows.Forms.BindingSource orderbindingSource;
+        private System.Windows.Forms.BindingSource orderItemBindingSource;
+        private System.Windows.Forms.BindingSource orderServiceBindingSource;
+        private System.Windows.Forms.BindingSource orderBindingSource1;
+        private System.Windows.Forms.BindingSource itemsBindingSource;
+        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn orderIdDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn customerDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn createTimeDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn totalPriceDataGridViewTextBoxColumn;
+        private System.Windows.Forms.BindingSource orderItemBindingSource1;
+        private System.Windows.Forms.DataGridView dataGridView2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn indexDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn goodsNameDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn quantityDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn priceDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn totalPriceDataGridViewTextBoxColumn1;
     }
 }
 
