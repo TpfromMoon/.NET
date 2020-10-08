@@ -7,115 +7,124 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Xml.Serialization;
+using System.IO;
 
-namespace homework4
+namespace ordermanagewinform
 {
     public partial class Form1 : Form
     {
+
+        public string KeyWord { get; set; }
+        public OrderDetails apple;
+        public OrderDetails egg;
+        public OrderDetails milk;
+
+
+        public Order order1;
+        public Order order2;
+        public Order order3;
+
+        public OrderService os = new OrderService();
+
+        string fileName = @"./orders.xml";
         public Form1()
         {
             InitializeComponent();
-            String[] arr = new String[] { "红", "黄", "蓝" };
-            for (int i = 0; i < arr.Length; i++)
+            apple = new OrderDetails(1, "apple", 10.0, 80);
+            egg = new OrderDetails(2, "eggs", 1.2, 200);
+            milk = new OrderDetails(3, "milk", 50, 10);
+
+            order1 = new Order(1, "Customer1", new List<OrderDetails> { apple, egg, milk });
+            order2 = new Order(2, "Customer2", new List<OrderDetails> { egg, milk });
+            order3 = new Order(3, "Customer2", new List<OrderDetails> { apple, milk });
+
+            os.AddOrder(order1);
+            os.AddOrder(order2);
+            os.AddOrder(order3);
+
+            orderbindingSource.DataSource = os.Orders;
+
+            textBox1.DataBindings.Add("Text", this, "KeyWord");
+
+        }
+
+        private void btAdd_Click(object sender, EventArgs e)
+        {
+            Order order = new Order();
+            OrderDetails orderItem = new OrderDetails();
+            order.AddItem(orderItem);
+            os.AddOrder(order);
+            Form2 form2 = new Form2(order, orderItem);
+            form2.Show(this);
+            
+
+        }
+
+        private void btDel_Click(object sender, EventArgs e)
+        {
+            uint orderID = (uint)dataGridView1.CurrentRow.Cells[0].Value;
+            Order order = os.GetOrder(orderID);
+            if (order != null)
             {
-                comboBox1.Items.Add(arr[i]);
+                os.Orders.Remove(order);
+            }
+            orderbindingSource.ResetBindings(false);
+        }
+
+        private void btChange_Click(object sender, EventArgs e)
+        {
+            uint orderID = (uint)dataGridView1.CurrentRow.Cells[0].Value;
+            Order order = os.GetOrder(orderID);
+            uint index = (uint)dataGridView1.CurrentRow.Cells[0].Value;
+            OrderDetails orderItem = order.GetItem(index);
+            Form2 form2 = new Form2(order, orderItem);
+            form2.Show(this);
+        }
+
+        private void btImport_Click(object sender, EventArgs e)
+        {
+            XmlSerializer xs = new XmlSerializer(typeof(List<Order>));
+            using (FileStream fs = new FileStream(fileName, FileMode.Open))
+            {
+                List<Order> temp = (List<Order>)xs.Deserialize(fs);
+                temp.ForEach(order => {
+                    if (!os.Orders.Contains(order))
+                    {
+                        os.Orders.Add(order);
+                    }
+                });
             }
         }
 
-        private Graphics graphics;
-        double th1;
-        double th2;
-        double per1;
-        double per2;
-        Pen color;
-
-        Pen colorPen(string str)
+        private void btExport_Click(object sender, EventArgs e)
         {
-            Pen result;
-            if (str == "蓝")
-                result = Pens.Blue;
-            else if (str == "黄")
-                result = Pens.Yellow;
-            else if (str == "红")
-                result = Pens.Red;
-            else
-                result = Pens.Blue;
-            return result;
-        }
-        void drawCayleyTree(int n, double x0, double y0, double leng, double th)
-        {
-            if (n == 0)
-                return;
-            double x1 = x0 + leng * Math.Cos(th);
-            double y1 = y0 + leng * Math.Sin(th);
-
-            graphics.DrawLine(color, (int)x0, (int)y0, (int)x1, (int)y1);
-
-            drawCayleyTree(n - 1, x1, y1, per1 * leng, th + th1);
-            drawCayleyTree(n - 1, x1, y1, per2 * leng, th - th2);
-        }
-        void CheckInput(TextBox tbox, string dft)
-        {
-            try
+            XmlSerializer xs = new XmlSerializer(typeof(List<Order>));
+            using (FileStream fs = new FileStream(fileName, FileMode.Create))
             {
-                double i = double.Parse(tbox.Text);
-                if (i < 0)
-                    tbox.Text = dft;
-            }
-            catch { tbox.Text = dft; }
-        }
-        private void button1_Click(object sender, EventArgs e)
-        {
-            int n = int.Parse(textBox1.Text);
-            double len = double.Parse(textBox2.Text);
-            per1 = double.Parse(textBox3.Text);
-            per2 = double.Parse(textBox4.Text);
-            th1 = double.Parse(textBox5.Text) * Math.PI / 180;
-            th2 = double.Parse(textBox6.Text) * Math.PI / 180;
-            color = colorPen(comboBox1.Text);
-            if (graphics == null)
-                graphics = this.panel1.CreateGraphics();
-            graphics.Clear(Color.White);
-            drawCayleyTree(n, 200, 310, len, -Math.PI / 2);
-        }
-
-        private void textBox1_TextChanged(object sender, EventArgs e)
-        {
-            try
-            {
-                int i = int.Parse(textBox1.Text);
-                if (i < 0)
-                    textBox1.Text = "10";
-            }
-            catch
-            {
-                textBox1.Text = "10";
+                xs.Serialize(fs, os.Orders);
             }
         }
 
-        private void textBox2_TextChanged(object sender, EventArgs e)
+        private void btQuery_Click(object sender, EventArgs e)
         {
-            CheckInput(textBox2, "100");
-        }
-
-        private void textBox3_TextChanged(object sender, EventArgs e)
-        {
-            CheckInput(textBox3, "0.6");
-        }
-
-        private void textBox4_TextChanged(object sender, EventArgs e)
-        {
-            CheckInput(textBox4, "0.7");
-        }
-
-        private void textBox5_TextChanged(object sender, EventArgs e)
-        {
-            CheckInput(textBox5, "30");
-        }
-
-        private void textBox6_TextChanged(object sender, EventArgs e)
-        {
-            CheckInput(textBox6, "20");
+            if (KeyWord == null || KeyWord == "")
+            {
+                orderbindingSource.DataSource = os.Orders;
+            }
+            string check = comboBox1.Text;
+            switch (check)
+            {
+                case "按客户名查询":
+                    orderbindingSource.DataSource = os.Orders.Where(s => s.Customer == KeyWord);
+                    break;
+                case "按商品名查询":
+                    orderbindingSource.DataSource =
+                    os.Orders.Where(s => s.Items.Exists(item => item.GoodsName == KeyWord));
+                    break;
+            }
         }
     }
+
+   
 }
